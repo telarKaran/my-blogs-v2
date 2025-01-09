@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <Header />
           <div className="container mt-4">{children}</div>
-          {/* <Footer></Footer> */}{" "}
+          <Footer></Footer>
         </AuthProvider>
       </body>
     </html>

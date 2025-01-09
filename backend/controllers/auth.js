@@ -44,13 +44,12 @@ exports.signin = async (req, res) => {
       error: "User with that email does not exist. Please signup.",
     });
   }
-  // authenticate
+
   if (!user.authenticate(password)) {
     return res.status(400).json({
       error: "Email and password do not match.",
     });
   }
-  // generate a token and send to client
   const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
@@ -72,5 +71,5 @@ exports.signout = (req, res) => {
 
 exports.requireSignin = expressjwt({
   secret: process.env.JWT_SECRET,
-  algorithms: ["HS256"], // Specify the algorithm used to sign the JWT
+  algorithms: ["HS256"],
 });
